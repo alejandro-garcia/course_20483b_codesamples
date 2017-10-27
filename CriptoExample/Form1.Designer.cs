@@ -32,7 +32,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtClavePublicaEnviador = new System.Windows.Forms.TextBox();
             this.txtFirmaEnviador = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnMensajeEnviador = new System.Windows.Forms.Button();
             this.txtClaveEncriptadaEnviador = new System.Windows.Forms.TextBox();
             this.btnDesencriptarClaveSimetricaEnviador = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -83,6 +83,13 @@
             this.txtSimetricaIVEnviador = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.btnMensajeReceptor = new System.Windows.Forms.Button();
+            this.txtMensajeEnviador = new System.Windows.Forms.TextBox();
+            this.txtMensajeReceptorDesencriptado = new System.Windows.Forms.TextBox();
+            this.txtMensajeEnviadorEncriptado = new System.Windows.Forms.TextBox();
+            this.txtMensajeReceptorEncriptado = new System.Windows.Forms.TextBox();
+            this.txtMensajeEnviadorDesencriptado = new System.Windows.Forms.TextBox();
+            this.txtMensajeReceptor = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -95,8 +102,11 @@
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
-            // splitContainer1.Panel1
             // 
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.txtMensajeEnviadorEncriptado);
+            this.splitContainer1.Panel1.Controls.Add(this.txtMensajeReceptorDesencriptado);
+            this.splitContainer1.Panel1.Controls.Add(this.txtMensajeEnviador);
             this.splitContainer1.Panel1.Controls.Add(this.txtSimetricaKeyEnviador);
             this.splitContainer1.Panel1.Controls.Add(this.txtSimetricaIVEnviador);
             this.splitContainer1.Panel1.Controls.Add(this.label21);
@@ -104,7 +114,7 @@
             this.splitContainer1.Panel1.Controls.Add(this.label13);
             this.splitContainer1.Panel1.Controls.Add(this.txtClavePublicaEnviador);
             this.splitContainer1.Panel1.Controls.Add(this.txtFirmaEnviador);
-            this.splitContainer1.Panel1.Controls.Add(this.button4);
+            this.splitContainer1.Panel1.Controls.Add(this.btnMensajeEnviador);
             this.splitContainer1.Panel1.Controls.Add(this.txtClaveEncriptadaEnviador);
             this.splitContainer1.Panel1.Controls.Add(this.btnDesencriptarClaveSimetricaEnviador);
             this.splitContainer1.Panel1.Controls.Add(this.label11);
@@ -120,7 +130,11 @@
             // 
             // Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.txtMensajeReceptorEncriptado);
+            this.splitContainer1.Panel2.Controls.Add(this.btnMensajeReceptor);
+            this.splitContainer1.Panel2.Controls.Add(this.txtMensajeEnviadorDesencriptado);
             this.splitContainer1.Panel2.Controls.Add(this.txtFirmaReceptor);
+            this.splitContainer1.Panel2.Controls.Add(this.txtMensajeReceptor);
             this.splitContainer1.Panel2.Controls.Add(this.txtValorHashReceptor);
             this.splitContainer1.Panel2.Controls.Add(this.txtClaveEncriptadaReceptor);
             this.splitContainer1.Panel2.Controls.Add(this.label10);
@@ -154,7 +168,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.button3);
             this.splitContainer1.Panel2.Controls.Add(this.label19);
             this.splitContainer1.Panel2.Controls.Add(this.label20);
-            this.splitContainer1.Size = new System.Drawing.Size(784, 561);
+            this.splitContainer1.Size = new System.Drawing.Size(784, 749);
             this.splitContainer1.SplitterDistance = 377;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -181,14 +195,15 @@
             this.txtFirmaEnviador.Size = new System.Drawing.Size(258, 20);
             this.txtFirmaEnviador.TabIndex = 23;
             // 
-            // button4
+            // btnMensajeEnviador
             // 
-            this.button4.Location = new System.Drawing.Point(211, 464);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(154, 27);
-            this.button4.TabIndex = 23;
-            this.button4.Text = "Enviar >>";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnMensajeEnviador.Location = new System.Drawing.Point(300, 464);
+            this.btnMensajeEnviador.Name = "btnMensajeEnviador";
+            this.btnMensajeEnviador.Size = new System.Drawing.Size(65, 27);
+            this.btnMensajeEnviador.TabIndex = 23;
+            this.btnMensajeEnviador.Text = "Enviar >>";
+            this.btnMensajeEnviador.UseVisualStyleBackColor = true;
+            this.btnMensajeEnviador.Click += new System.EventHandler(this.btnMensajeEnviador_Click);
             // 
             // txtClaveEncriptadaEnviador
             // 
@@ -621,11 +636,69 @@
             this.label22.TabIndex = 25;
             this.label22.Text = "IV";
             // 
+            // btnMensajeReceptor
+            // 
+            this.btnMensajeReceptor.Location = new System.Drawing.Point(14, 464);
+            this.btnMensajeReceptor.Name = "btnMensajeReceptor";
+            this.btnMensajeReceptor.Size = new System.Drawing.Size(65, 27);
+            this.btnMensajeReceptor.TabIndex = 24;
+            this.btnMensajeReceptor.Text = "<< Enviar";
+            this.btnMensajeReceptor.UseVisualStyleBackColor = true;
+            this.btnMensajeReceptor.Click += new System.EventHandler(this.btnMensajeReceptor_Click);
+            // 
+            // txtMensajeEnviador
+            // 
+            this.txtMensajeEnviador.Location = new System.Drawing.Point(106, 497);
+            this.txtMensajeEnviador.Name = "txtMensajeEnviador";
+            this.txtMensajeEnviador.Size = new System.Drawing.Size(258, 20);
+            this.txtMensajeEnviador.TabIndex = 29;
+            // 
+            // txtMensajeReceptorDesencriptado
+            // 
+            this.txtMensajeReceptorDesencriptado.Location = new System.Drawing.Point(106, 589);
+            this.txtMensajeReceptorDesencriptado.Name = "txtMensajeReceptorDesencriptado";
+            this.txtMensajeReceptorDesencriptado.Size = new System.Drawing.Size(258, 20);
+            this.txtMensajeReceptorDesencriptado.TabIndex = 31;
+            // 
+            // txtMensajeEnviadorEncriptado
+            // 
+            this.txtMensajeEnviadorEncriptado.Location = new System.Drawing.Point(106, 523);
+            this.txtMensajeEnviadorEncriptado.Multiline = true;
+            this.txtMensajeEnviadorEncriptado.Name = "txtMensajeEnviadorEncriptado";
+            this.txtMensajeEnviadorEncriptado.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtMensajeEnviadorEncriptado.Size = new System.Drawing.Size(258, 60);
+            this.txtMensajeEnviadorEncriptado.TabIndex = 32;
+            this.txtMensajeEnviadorEncriptado.TextChanged += new System.EventHandler(this.txtMensajeEnviadorEncriptado_TextChanged);
+            // 
+            // txtMensajeReceptorEncriptado
+            // 
+            this.txtMensajeReceptorEncriptado.Location = new System.Drawing.Point(103, 523);
+            this.txtMensajeReceptorEncriptado.Multiline = true;
+            this.txtMensajeReceptorEncriptado.Name = "txtMensajeReceptorEncriptado";
+            this.txtMensajeReceptorEncriptado.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtMensajeReceptorEncriptado.Size = new System.Drawing.Size(258, 60);
+            this.txtMensajeReceptorEncriptado.TabIndex = 35;
+            this.txtMensajeReceptorEncriptado.TextChanged += new System.EventHandler(this.txtMensajeReceptorEncriptado_TextChanged);
+            // 
+            // txtMensajeEnviadorDesencriptado
+            // 
+            this.txtMensajeEnviadorDesencriptado.Location = new System.Drawing.Point(103, 589);
+            this.txtMensajeEnviadorDesencriptado.Name = "txtMensajeEnviadorDesencriptado";
+            this.txtMensajeEnviadorDesencriptado.Size = new System.Drawing.Size(258, 20);
+            this.txtMensajeEnviadorDesencriptado.TabIndex = 34;
+            // 
+            // txtMensajeReceptor
+            // 
+            this.txtMensajeReceptor.Location = new System.Drawing.Point(103, 497);
+            this.txtMensajeReceptor.Name = "txtMensajeReceptor";
+            this.txtMensajeReceptor.Size = new System.Drawing.Size(258, 20);
+            this.txtMensajeReceptor.TabIndex = 33;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(784, 749);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -668,7 +741,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtClavePublicaEnviador;
         private System.Windows.Forms.TextBox txtFirmaEnviador;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnMensajeEnviador;
         private System.Windows.Forms.TextBox txtClaveEncriptadaEnviador;
         private System.Windows.Forms.Button btnDesencriptarClaveSimetricaEnviador;
         private System.Windows.Forms.Label label11;
@@ -696,6 +769,13 @@
         private System.Windows.Forms.TextBox txtSimetricaIVEnviador;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txtMensajeEnviadorEncriptado;
+        private System.Windows.Forms.TextBox txtMensajeReceptorDesencriptado;
+        private System.Windows.Forms.TextBox txtMensajeEnviador;
+        private System.Windows.Forms.TextBox txtMensajeReceptorEncriptado;
+        private System.Windows.Forms.Button btnMensajeReceptor;
+        private System.Windows.Forms.TextBox txtMensajeEnviadorDesencriptado;
+        private System.Windows.Forms.TextBox txtMensajeReceptor;
     }
 }
 

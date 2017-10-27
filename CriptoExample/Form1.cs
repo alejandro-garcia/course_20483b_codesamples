@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using System.IO;
 
 namespace CriptoExample
 {
@@ -134,6 +135,62 @@ namespace CriptoExample
             //desencriptar las claves simetricas
             txtSimetricaIVEnviador.Text = Convert.ToBase64String(rsa.Decrypt(iv, false));
             txtSimetricaKeyEnviador.Text = Convert.ToBase64String(rsa.Decrypt(key, false));
+        }
+
+        private void txtMensajeEnviadorEncriptado_TextChanged(object sender, EventArgs e)
+        {
+            txtMensajeEnviadorDesencriptado.Text = DesencriptarMensaje(txtMensajeEnviadorEncriptado.Text,
+                                                                       txtSimetricaIVEnviador.Text,
+                                                                       txtSimetricaKeyEnviador.Text);
+        }
+
+        private void btnMensajeEnviador_Click(object sender, EventArgs e)
+        {
+            txtMensajeEnviadorEncriptado.Text = EncriptarMensaje(txtMensajeEnviador.Text, 
+                                                                 txtSimetricaIVEnviador.Text, 
+                                                                 txtSimetricaKeyEnviador.Text);
+
+        }
+
+        private void btnMensajeReceptor_Click(object sender, EventArgs e)
+        {
+            txtMensajeReceptorEncriptado.Text = EncriptarMensaje(txtMensajeReceptor.Text,
+                                                                 txtSimetricaIVReceptor.Text,
+                                                                 txtSimetricaKeyReceptor.Text);
+        }
+
+        private string EncriptarMensaje(string message, string _iv, string _key)
+        {
+            Byte[] iv = Convert.FromBase64String(_iv);
+            Byte[] key = Convert.FromBase64String(_key);
+
+            MemoryStream ms = new MemoryStream();
+            // Encriptar con TripleDES
+            TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
+            CryptoStream cs = new CryptoStream(ms, tdes.CreateEncryptor(key, iv), CryptoStreamMode.Write);
+            StreamWriter sw = new StreamWriter(cs);
+            sw.WriteLine(message);
+            sw.Close();
+            return Convert.ToBase64String(ms.ToArray());
+        }
+
+        private string DesencriptarMensaje(string mensaje, string _iv, string _key)
+        {
+            Byte[] iv = Convert.FromBase64String(_iv);
+            Byte[] key = Convert.FromBase64String(_key);
+            MemoryStream ms = new MemoryStream(Convert.FromBase64String(mensaje));
+            TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
+            CryptoStream cs = new CryptoStream(ms, tdes.CreateDecryptor(key, iv), CryptoStreamMode.Read);
+            StreamReader sr = new StreamReader(cs);
+            return sr.ReadToEnd();
+        }
+
+        private void txtMensajeReceptorEncriptado_TextChanged(object sender, EventArgs e)
+        {
+            txtMensajeReceptorDesencriptado.Text = DesencriptarMensaje(txtMensajeReceptorEncriptado.Text, 
+                                                                       txtSimetricaIVReceptor.Text, 
+                                                                       txtSimetricaKeyReceptor.Text);
+
         }
     }
 }
