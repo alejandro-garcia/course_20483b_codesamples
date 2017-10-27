@@ -119,5 +119,21 @@ namespace CriptoExample
                 txtClaveEncriptadaEnviador.BackColor = Color.Red;
             }
         }
+
+        private void btnDesencriptarClaveSimetricaEnviador_Click(object sender, EventArgs e)
+        {
+            Byte[] iv, key;
+            Byte[] salida = Convert.FromBase64String(txtClaveEncriptadaEnviador.Text);
+            iv = new Byte[BitConverter.ToInt32(salida, 0)];
+            key = new Byte[BitConverter.ToInt32(salida, 4)];
+            Array.Copy(salida, 8, iv, 0, iv.Length);
+            Array.Copy(salida, 8 + iv.Length, key, 0, key.Length);
+            //usar la clave privada del enviador
+            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
+            rsa.FromXmlString(txtPrivadaAsimetricaEnviador.Text);
+            //desencriptar las claves simetricas
+            txtSimetricaIVEnviador.Text = Convert.ToBase64String(rsa.Decrypt(iv, false));
+            txtSimetricaKeyEnviador.Text = Convert.ToBase64String(rsa.Decrypt(key, false));
+        }
     }
 }
