@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{AA79F9F6-F3D1-4A0C-B2C7-C51EFFE80E06}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MutableStrings", "ConsoleApplication1\MutableStrings.csproj", "{AA79F9F6-F3D1-4A0C-B2C7-C51EFFE80E06}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "delegados", "delegados\delegados.csproj", "{587231BF-28B9-4837-B04D-6AF7731ED802}"
 EndProject
@@ -15,21 +15,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumExample", "EnumExample\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertiesExample", "PropertiesExample\PropertiesExample.csproj", "{E8ADE713-4434-4CA9-AE15-03B55D128A65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolymorphfystExample", "PolymorphfystExample\PolymorphfystExample.csproj", "{25EA14DA-EF68-4FD3-B38E-BDF2BAE9AD48}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractClassExample", "AbstractClassExample\AbstractClassExample.csproj", "{DF606822-023A-48A2-8FF9-73FD599FE92E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculadora", "Calculadora\Calculadora.csproj", "{C0856B46-9895-4DEB-B943-61F14D7B1C5A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LambdaExample", "LambdaExample\LambdaExample.csproj", "{926DA1F5-74C4-48D3-9F2A-C2187777365D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObserverPatternExample", "ObserverPatternExample\ObserverPatternExample.csproj", "{2A808574-B8E9-4016-97C4-EDECA21D41AB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericExample", "GenericExample\GenericExample.csproj", "{CBBAE1B9-517F-4CC5-ADD1-D82244C37ACE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hilos", "Hilos\Hilos.csproj", "{88B5A3F7-8557-4C1C-B2F7-B4C15F2E6D8A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TasksExample", "TasksExample\TasksExample.csproj", "{858180BD-5360-4C45-8616-109A1282A7EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CriptoExample", "CriptoExample\CriptoExample.csproj", "{B4855E0D-7EA3-4D73-9B4A-98C5F7084B84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,10 +63,6 @@ Global
 		{E8ADE713-4434-4CA9-AE15-03B55D128A65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8ADE713-4434-4CA9-AE15-03B55D128A65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8ADE713-4434-4CA9-AE15-03B55D128A65}.Release|Any CPU.Build.0 = Release|Any CPU
-		{25EA14DA-EF68-4FD3-B38E-BDF2BAE9AD48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{25EA14DA-EF68-4FD3-B38E-BDF2BAE9AD48}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{25EA14DA-EF68-4FD3-B38E-BDF2BAE9AD48}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{25EA14DA-EF68-4FD3-B38E-BDF2BAE9AD48}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DF606822-023A-48A2-8FF9-73FD599FE92E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DF606822-023A-48A2-8FF9-73FD599FE92E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF606822-023A-48A2-8FF9-73FD599FE92E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -81,10 +75,6 @@ Global
 		{926DA1F5-74C4-48D3-9F2A-C2187777365D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{926DA1F5-74C4-48D3-9F2A-C2187777365D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{926DA1F5-74C4-48D3-9F2A-C2187777365D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2A808574-B8E9-4016-97C4-EDECA21D41AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A808574-B8E9-4016-97C4-EDECA21D41AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A808574-B8E9-4016-97C4-EDECA21D41AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A808574-B8E9-4016-97C4-EDECA21D41AB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CBBAE1B9-517F-4CC5-ADD1-D82244C37ACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CBBAE1B9-517F-4CC5-ADD1-D82244C37ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBBAE1B9-517F-4CC5-ADD1-D82244C37ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -97,6 +87,10 @@ Global
 		{858180BD-5360-4C45-8616-109A1282A7EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{858180BD-5360-4C45-8616-109A1282A7EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{858180BD-5360-4C45-8616-109A1282A7EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4855E0D-7EA3-4D73-9B4A-98C5F7084B84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4855E0D-7EA3-4D73-9B4A-98C5F7084B84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4855E0D-7EA3-4D73-9B4A-98C5F7084B84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4855E0D-7EA3-4D73-9B4A-98C5F7084B84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
